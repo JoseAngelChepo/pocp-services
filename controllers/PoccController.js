@@ -1,7 +1,12 @@
 module.exports = {
-  create: (poccService, asyncError) => asyncError(async (req, res) => {
+  create: (poccService, teacherService, asyncError) => asyncError(async (req, res) => {
     const dataPocc = { ...req.body }
     const pocc = await poccService.create(dataPocc);
+    console.log('creating pocc in tron')
+    const poccMintedRegister = {
+      nftPoccAddress: 'test',
+    }
+    const teacher = await teacherService.addPoccToTeacherById(dataPocc.creator, pocc, poccMintedRegister)
     return res.status(201).json({ pocc });
   }),
   getPoccById: (poccService, asyncError) => asyncError(async (req, res) => {

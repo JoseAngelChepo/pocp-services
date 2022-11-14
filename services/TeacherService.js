@@ -21,6 +21,14 @@ module.exports = {
       throw GenericError(err, 409);
     }),
   
+  addPoccToTeacherById: (_id, pocc, data) => Teacher.findOneAndUpdate(
+      { _id }, 
+      { $push: { poccRegistered: { pocc, ...data } } },
+      { new: true, useFindAndModify: false }
+    ).exec()
+      .then((res) => res)
+      .catch((err) => { throw new GenericError(err); }),
+
   findAllSchool: (skipNumber = 0, limitNumber = 10) => Teacher.find()
     .limit(limitNumber)
     .skip(skipNumber)

@@ -9,6 +9,7 @@ module.exports = {
       dateRegistered: Joi.date().required(),
       course: Joi.object().required(),
       quantityAvailable: Joi.number().optional(),
+      creator: Joi.string().required(),
     }),
   }),
 };

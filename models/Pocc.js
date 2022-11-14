@@ -48,6 +48,14 @@ const poccSchema = new mongoose.Schema({
   status: {
     type: String,
   },
+  creator: {
+    type: {
+      pocc: {
+        type: mongoose.Types.ObjectId,
+        ref: 'teacher',
+      },
+    },
+  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('pocc', poccSchema);

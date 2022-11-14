@@ -22,7 +22,7 @@ const schoolSchema = new mongoose.Schema({
       {
         pocc: {
           type: mongoose.Types.ObjectId,
-          ref: 'teachers',
+          ref: 'teacher',
         },
       },
     ],
