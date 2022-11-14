@@ -20,6 +20,14 @@ module.exports = {
     .then((res) => res)
     .catch((err) => { throw new GenericError(err); }),
 
+  addPoccToStudentById: (_id, pocc, data) => Student.findOneAndUpdate(
+      { _id }, 
+      { $push: { poccMinted: { pocc, ...data } } },
+      { new: true, useFindAndModify: false }
+    ).exec()
+      .then((res) => res)
+      .catch((err) => { throw new GenericError(err); }),
+
   findAll: () => Student.find()
     .then((result) => Promise.resolve(result))
     .catch((err) => {
